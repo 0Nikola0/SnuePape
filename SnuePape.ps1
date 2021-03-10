@@ -6,8 +6,7 @@ GitHub: https://github.com/0Nikola0/SnuePape
 
 
 # Set subreddit here
-$subreddit = "r/BoJackHorseman"
-
+$subreddit = "r/wallpapers"
 
 function getWallpaperLink($subreddit){
     Write-Host "[>]" -ForegroundColor Green -NoNewLine
