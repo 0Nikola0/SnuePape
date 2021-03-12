@@ -17,7 +17,18 @@ Example subreddits:
     r/CarPorn
     r/ExposurePorn
 #>
-$subreddit = "r/MinimalWallpaper"
+$subreddit = "r/Wallpapers"
+
+<#
+Timespan can be changed too
+Options:
+    day
+    week
+    month
+    year
+    all     # (means top of all time)
+#>
+$timespan = "day"
 
 
 function getWallpaperLink($subreddit){
@@ -25,7 +36,7 @@ function getWallpaperLink($subreddit){
     Write-Host "Sending request to the site"
 
     # Sending request to the site
-    $URL = "http://www.reddit.com/{0}/top.json" -f $subreddit
+    $URL = "http://www.reddit.com/{0}/top.json?t={1}" -f $subreddit, $timespan
     $response = Invoke-WebRequest -Uri $URL 
     $results = $response.Content | ConvertFrom-Json
     $data = $results.data.children.data
