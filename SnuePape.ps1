@@ -2,11 +2,11 @@ Write-Host "
 SnuePape v2.0
 Made by 0Nikola0
 GitHub: https://github.com/0Nikola0/SnuePape
-" -ForegroundColor Green
+" -ForegroundColor Green -BackgroundColor Black
 
 
 # Set subreddit here
-$subreddit = "r/BoJackHorseman"
+$subreddit = "r/wallpapers"
 
 
 function getWallpaperLink($subreddit){
@@ -25,7 +25,10 @@ function getWallpaperLink($subreddit){
     # Loops through the found links and checks for images
     foreach ($post in $data){
     if ($post.url.endsWith('.jpg') -or $post.url.endsWith('.png')){
-        return $post
+        # Returns the post ONLY if its not NSFW (mature conent), if it is it continues looping
+        if (!$post.over_18){
+            return $post
+            }
         }
     }
 }
