@@ -5,8 +5,19 @@ GitHub: https://github.com/0Nikola0/SnuePape
 " -ForegroundColor Green -BackgroundColor Black
 
 
-# Set subreddit here
-$subreddit = "r/wallpapers"
+<# 
+You can change the subreddit to something else
+Example subreddits: 
+    r/Wallpaper
+    r/Wallpapers
+    r/MinimalWallpaper
+    r/WQHD_Wallpaper
+    r/EarthPorn
+    r/CityPorn
+    r/CarPorn
+    r/ExposurePorn
+#>
+$subreddit = "r/MinimalWallpaper"
 
 
 function getWallpaperLink($subreddit){
@@ -24,10 +35,10 @@ function getWallpaperLink($subreddit){
 
     # Loops through the found links and checks for images
     foreach ($post in $data){
-    if ($post.url.endsWith('.jpg') -or $post.url.endsWith('.png')){
-        # Returns the post ONLY if its not NSFW (mature conent), if it is it continues looping
-        if (!$post.over_18){
-            return $post
+        if ($post.url.endsWith('.jpg') -or $post.url.endsWith('.png')){
+            # Returns the post ONLY if its not NSFW (mature conent), if it is it continues looping
+            if (!$post.over_18){
+                return $post
             }
         }
     }
